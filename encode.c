@@ -1,13 +1,14 @@
 #include "encode.h"
 #include "types.h"
 #include "common.h"
+#include <string.h>
 
 
 // function which will check the format is correct or not
 Status read_and_validate_encode_args(char* argv[],EncodeInfo *encInfo) 
 {
-
-    if ( strstr(argv[2],".bmp")  == NULL || argv[2][0] == '.' )
+// (strcmp(".bmp",strstr( argv[2] ,".bmp" ) ) != 0 ) this one checks if its only ".bmp" not ".bmpabcd"
+    if ( strstr(argv[2],".bmp")  == NULL || argv[2][0] == '.' || (strcmp(".bmp",strstr( argv[2] ,".bmp" ) ) != 0 ) )
     {
         printf("INFO : Error! source image format is not valid \n");
         return e_failure;
@@ -50,7 +51,7 @@ Status read_and_validate_encode_args(char* argv[],EncodeInfo *encInfo)
 
     if ( argv[4] != NULL )
     {
-        if ( strstr(argv[4],".bmp") == NULL || argv[4][0] == '.' )
+        if ( strstr(argv[4],".bmp") == NULL || argv[4][0] == '.' || (strcmp(".bmp",strstr( argv[4] ,".bmp" ) ) != 0 ) )
         {
             printf("INFO : Error! check the format of optional file \n");
             return e_failure;
@@ -456,3 +457,4 @@ Status do_encoding(EncodeInfo *encInfo)
 
     return e_success;
 }
+

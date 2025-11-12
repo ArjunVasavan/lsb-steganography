@@ -5,7 +5,7 @@
  // checks the format of argument
 Status read_and_validate_decode_args(char **argv, DecodeInfo *decInfo)
 {
-    if( strstr( argv[2] , ".bmp" ) == NULL || argv[2][0] == '.' ) 
+    if( strstr( argv[2] , ".bmp" ) == NULL || argv[2][0] == '.'  || (strcmp(".bmp",strstr( argv[2] ,".bmp" ) ) != 0 ) ) 
     {
         printf("Error! source image format is not valid \n");
         return e_failure;
@@ -16,22 +16,22 @@ Status read_and_validate_decode_args(char **argv, DecodeInfo *decInfo)
 
     if(argv[3] != NULL )
     {
-        if ( strstr(argv[3],".txt")) // checks if its .txt
+        if ( strstr(argv[3],".txt") && strcmp(".txt", strstr(argv[3],".txt")) == 0 ) // checks if its .txt
         {
             decInfo->output_file_name = argv[3]; // storing name of argument
             decInfo->users_extension = strstr(argv[3],".txt"); // storing ext name
         }
-        else if ( strstr(argv[3],".c"))
+        else if ( strstr(argv[3],".c") && strcmp(".c", strstr(argv[3],".c")) == 0 )
         {
             decInfo->output_file_name = argv[3];
             decInfo->users_extension = strstr(argv[3],".c");
         }
-        else if ( strstr(argv[3],".sh"))
+        else if ( strstr(argv[3],".sh") && strcmp(".sh", strstr(argv[3],".sh")) == 0 )
         {
             decInfo->output_file_name = argv[3];
             decInfo->users_extension = strstr(argv[3],".sh");
         }
-        else if ( strstr(argv[3],".h"))
+        else if ( strstr(argv[3],".h") && strcmp(".h", strstr(argv[3],".h")) == 0 )
         {
             decInfo->output_file_name = argv[3];
             decInfo->users_extension = strstr(argv[3],".h");
@@ -369,3 +369,4 @@ Status do_decoding(DecodeInfo *decInfo)
 
     return e_success;
 }
+
