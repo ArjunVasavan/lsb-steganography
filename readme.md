@@ -66,4 +66,4 @@ Arjun Vasavan
 
 ## License
 
-This project is open source and available for educational purposes created by arjun.
+This project is open source and available for educational purposes created.
