@@ -3,5 +3,5 @@
 a.out
 *.exe
 default.bmp
-beautiful.bmp
 *.bmp
+!beautiful.bmp
