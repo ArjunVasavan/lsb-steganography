@@ -1,0 +1,6 @@
+*.o
+*.out
+a.out
+*.exe
+default.bmp
+*.bmp
